@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="formulaire.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>cours</title>
+</head>
+
+
+
+<body>
+
+
+
+
+    <form action="connexion.html" method="post">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+
+        <label for="prénom">Prénom :</label>
+        <input type="text" id="prénom" name="prénom" required>
+
+        <label for="date_de_naissance">Date de naissance :</label>
+        <input type="date" id="date_de_naissance" name="date_de_naissance" onchange="calculateAge()">
+
+        <label for="age">Âge :</label>
+        <input type="number" id="age" name="age" readonly>
+
+        <label for="poids">Poids :</label>
+        <input type="number" id="poids" name="poids" required>
+
+        <label for="catégorie">Catégorie :</label>
+        <select id="catégorie" name="catégorie" required>
+            <option value="categorie1">catégorie</option>
+            <option value="categorie2">Benjamin (10-11)</option>
+            <option value="categorie3">Minime (12-13)</option>
+            <option value="categorie4">Cadet (14-15-16)</option>
+            <option value="categorie5">Junior (17-18-19)</option>
+            <option value="categorie6">Senior (20 et plus)</option>
+            <option value="categorie7">Vétérans (30 et plus)</option>
+
+        </select>
+
+        <label for="adresse_mail">Adresse e-mail :</label>
+        <input type="email" id="adresse_mail" name="adresse_mail" required>
+
+        <!--<label>Sexe :</label>
+        <input type="radio" id="homme" name="sexe" value="homme" required>
+        <label for="homme">Homme</label>
+        <input type="radio" id="femme" name="sexe" value="femme" required>
+        <label for="femme">Femme</label>-->
+
+        <label for="sexe">Sexe :</label>
+        <select id="sexe" name="sexe" required>
+            <option value="homme"></option>
+            <option value="homme">homme</option>
+            <option value="femme">femme</option>
+
+        </select>
+
+
+
+        <!-- Inclure votre script ici -->
+        <script>
+            function calculateAge() {
+                var date_de_naissance = document.getElementById('date_de_naissance').value;
+                var today = new Date();
+                var birthDate = new Date(date_de_naissance);
+                var age = today.getFullYear() - birthDate.getFullYear();
+
+                if (today.getMonth() < birthDate.getMonth() || (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+
+                document.getElementById('age').value = age;
+            }
+        </script>
+
+        <input type="submit" value="Envoyer">
+    </form>
+
+    <br>
+    <br>
+
+</body>
+
+
+</html>
